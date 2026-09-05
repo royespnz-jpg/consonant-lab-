@@ -1,5 +1,0 @@
-{
-  "_readme": "Placeholder. Run tools/make-audio.mjs to fill this in with real clips; it overwrites this file. While clips is empty the app uses the device voice.",
-  "sets": [],
-  "clips": {}
-}
