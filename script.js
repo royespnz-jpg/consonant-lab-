@@ -27,7 +27,7 @@
 
    Students are then asked for their name and section once, on first visit.
    ========================================================================== */
-const REPORT_URL = 'https://script.google.com/macros/s/AKfycbxVjL_O5E_HLIlA3mWqSLw7RjSHGsLmiqpVHMeFYhhE9pQyB8bdTQGuAkxYXYVkmlTt/exec';
+const REPORT_URL = 'https://script.google.com/macros/s/AKfycbwXBprMqUa_2wCuKocMnhzmthCrIYKDnbD6T-7Fwz_KA3xHDwDj7D3KrTeTcykFXsqj/exec';
 /* ============================================================================
    2. SOUND PROFILES
    ========================================================================== */
