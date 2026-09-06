@@ -28,7 +28,7 @@
    Students are then asked for their name and section once, on first visit.
    ========================================================================== */
 
-const REPORT_URL = 'https://script.google.com/macros/s/AKfycbwaXev_YHVK_Q1LIKVWmBDa5IH6lL2DgrN-nBl6RXnHJOG4G6sh8Lf9Ky4gF0W68zW9/exec';
+const REPORT_URL = 'https://script.google.com/macros/s/AKfycbxVjL_O5E_HLIlA3mWqSLw7RjSHGsLmiqpVHMeFYhhE9pQyB8bdTQGuAkxYXYVkmlTt/exec';
 
 /* ============================================================================
    1. TYPES
