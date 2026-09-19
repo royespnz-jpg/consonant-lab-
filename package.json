@@ -1,0 +1,17 @@
+{
+  "name": "consonant-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "audio": "node make-audio-tts.mjs",
+    "audio:kokoro": "node make-audio.mjs",
+    "voices": "node make-audio-tts.mjs --list",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "kokoro-js": "^1.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  }
+}
