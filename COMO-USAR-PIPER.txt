@@ -1,0 +1,80 @@
+THE CONSONANT LAB + PIPER
+=========================
+
+Piper SÍ funciona en vivo: tocás una palabra y la genera al momento. Pero hay
+un requisito que no se puede saltar.
+
+
+POR QUÉ HAY QUE COPIAR LOS ARCHIVOS
+-----------------------------------
+El servidor de Piper no manda ni una cabecera CORS (lo verifiqué en
+src/piper/http_server.py: no hay ninguna, y no existe opción para activarlas).
+Un navegador en otro dominio queda bloqueado, siempre.
+
+La salida: que la página la sirva el propio Piper. Su Flask ya publica una
+carpeta estática —
+
+    Flask(__name__, static_folder="img", static_url_path="/img")
+
+— así que si ponés la app ahí dentro, página y voz comparten origen y no hay
+CORS que valga.
+
+
+PASOS
+-----
+1. Instalá Piper y bajá una voz:
+
+       pip install piper-tts[http]
+       python3 -m piper.download_voices en_US-lessac-medium
+
+2. Averiguá dónde quedó la carpeta img de Piper:
+
+       python3 -c "import piper, os; print(os.path.join(os.path.dirname(piper.__file__), 'img'))"
+
+3. Copiá ahí dentro una carpeta "lab" con estos tres archivos:
+
+       index.html   script.js   style.css
+
+   Debe quedar:   .../piper/img/lab/index.html
+
+4. Levantá el servidor:
+
+       python3 -m piper.http_server -m en_US-lessac-medium
+
+5. Abrí en el navegador:
+
+       http://localhost:5000/img/lab/
+
+6. Ajustes -> Voice source -> "Voice server". El campo Address se deja VACÍO.
+
+
+PARA TUS ESTUDIANTES
+--------------------
+       ngrok http 5000
+
+y les pasás la URL que imprime + /img/lab/
+
+Tu computadora tiene que quedar encendida con Piper corriendo.
+
+
+MÁS VOCES
+---------
+    python3 -m piper.download_voices en_GB-cori-high
+    python3 -m piper.download_voices en_US-libritts_r-medium
+
+Aparecen solas en el desplegable. Las voces con muchos hablantes se listan una
+por una (en_US-libritts_r-medium · p226, etc.).
+
+Catálogo para escucharlas antes: https://rhasspy.github.io/piper-samples/
+
+
+SI PREFERÍS NO DEJAR NADA PRENDIDO
+----------------------------------
+Generá los audios una vez y subilos al repo:
+
+    python3 -m piper.http_server -m en_US-lessac-medium
+    npm install
+    npm run voices
+    npm run audio -- --voice en_US-lessac-medium
+
+Después subís la carpeta audio/ y tus estudiantes no dependen de vos.

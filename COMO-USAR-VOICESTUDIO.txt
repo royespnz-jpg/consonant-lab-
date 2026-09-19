@@ -1,0 +1,46 @@
+THE CONSONANT LAB + VOICESTUDIO
+===============================
+
+No hay nada que configurar. El campo "Address" en Ajustes se deja VACÍO: la
+app busca VoiceStudio sola, primero en la dirección de la propia página y
+después en 127.0.0.1:3900.
+
+
+CASO 1 — Solo vos, en tu computadora
+------------------------------------
+1. Abrí VoiceStudio.
+2. Abrí index.html (doble clic, o desde tu sitio de GitHub Pages).
+3. Ajustes -> Voice source -> VoiceStudio.
+
+Listo. Encuentra el 127.0.0.1:3900 solo. No hace falta ngrok ni tocar CORS.
+
+
+CASO 2 — Tus estudiantes, desde sus casas
+-----------------------------------------
+El truco: que la página y VoiceStudio salgan por el MISMO túnel. Así son el
+mismo origen, y no hay CORS ni dirección que escribir.
+
+1. Buscá la carpeta de VoiceStudio y, dentro, "frontend/dist".
+2. Creá ahí una carpeta "lab" y copiá adentro estos archivos:
+      index.html   script.js   style.css
+3. Abrí VoiceStudio.
+4. En una terminal:  ngrok http 3900
+5. Copiá la URL que imprime y pasale a tus estudiantes esa URL + /lab/
+      https://xxxx-xx-xx.ngrok-free.app/lab/
+
+Tu computadora tiene que quedar encendida con VoiceStudio abierto mientras
+practican. En el plan gratis de ngrok la URL cambia cada vez que lo reiniciás.
+
+
+SI ALGO FALLA
+-------------
+El renglón debajo de los botones dice qué pasó. Por ejemplo:
+
+  "Looked for VoiceStudio at ... and found nothing."
+      -> VoiceStudio no está abierto, o está en otro puerto.
+
+  "it has no voices yet"
+      -> Está corriendo, pero falta crear o clonar una voz en la app.
+
+  "This page is https, so the browser blocks plain http to ..."
+      -> Estás apuntando a otra máquina por http. Usá el Caso 2.
